@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const submitBtn = form.querySelector('button[type="submit"]');
-    const API_URL = "http://localhost:8082/api/candidatures";
+    const API_URL = "/api/candidatures";
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
