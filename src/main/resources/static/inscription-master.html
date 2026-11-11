@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscription en Master - ISG Sousse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cairo:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#">
+    <img class="logo" alt="ISG Sousse" src="images/logo.jpg">
+    <div class="brand-text">
+      <div class="ar">المعهد العالي للتصرف بسوسة</div>
+      <div class="fr">INSTITUT SUPÉRIEUR DE GESTION DE SOUSSE</div>
+      <div class="en">SOUSSE HIGHER EDUCATION INSTITUTE OF MANAGEMENT</div>
+    </div>
+  </a>
+  <div class="tools">
+    <div class="lang">🌐&nbsp; Français &nbsp;▾</div>
+    <div class="search">🔍</div>
+    <a class="intranet" href="#">👤 Espace Intranet</a>
+  </div>
+</header>
+
+<section class="master" id="master">
+  <h3>Inscription en Master</h3>
+  <p class="sub">Année universitaire 2026-2027. Les champs marqués <b style="color:#e53935">*</b> sont obligatoires.</p>
+
+  <form id="mform" novalidate enctype="multipart/form-data">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <fieldset><legend>1. Informations personnelles</legend>
+      <div class="grid">
+        <label>Nom <b>*</b><input name="nom" required></label>
+        <label>Prénom <b>*</b><input name="prenom" required></label>
+        <label>Nom et prénom en arabe<input name="nom_ar" dir="rtl"></label>
+        <label>N° CIN / Passeport <b>*</b><input name="cin" required inputmode="numeric" minlength="8"></label>
+        <label>Date de naissance <b>*</b><input type="date" name="naissance" required></label>
+        <label>Lieu de naissance <b>*</b><input name="lieu" required></label>
+        <div><span style="font-size:13.5px;font-weight:600;color:#334">Sexe <b style="color:#e53935">*</b></span>
+          <div class="radios"><label><input type="radio" name="sexe" value="F" required> Féminin</label>
+          <label><input type="radio" name="sexe" value="M"> Masculin</label></div></div>
+        <label>Nationalité <b>*</b><input name="nat" value="Tunisienne" required></label>
+        <label class="full">Adresse <b>*</b><input name="adresse" required></label>
+        <label>Gouvernorat <b>*</b>
+          <select name="gouv" required><option value="">Choisir...</option>
+          <option>Sousse</option><option>Monastir</option><option>Mahdia</option><option>Tunis</option><option>Ariana</option>
+          <option>Ben Arous</option><option>Manouba</option><option>Nabeul</option><option>Zaghouan</option><option>Bizerte</option>
+          <option>Béja</option><option>Jendouba</option><option>Le Kef</option><option>Siliana</option><option>Kairouan</option>
+          <option>Kasserine</option><option>Sidi Bouzid</option><option>Sfax</option><option>Gafsa</option><option>Tozeur</option>
+          <option>Kébili</option><option>Gabès</option><option>Médenine</option><option>Tataouine</option><option>Autre</option></select></label>
+        <label>Code postal<input name="cp" inputmode="numeric"></label>
+        <label>Téléphone <b>*</b><input type="tel" name="tel" required placeholder="+216 XX XXX XXX"></label>
+        <label>E-mail <b>*</b><input type="email" name="email" required></label>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>2. Parcours scolaire et universitaire</legend>
+      <div class="grid">
+        <label>Année d'obtention du Bac <b>*</b><input type="number" name="bac_an" min="2000" max="2026" required></label>
+        <label>Section du Bac <b>*</b>
+          <select name="bac_sec" required><option value="">Choisir...</option><option>Économie et gestion</option><option>Mathématiques</option>
+          <option>Sciences expérimentales</option><option>Technique</option><option>Informatique</option><option>Lettres</option><option>Sport</option><option>Autre</option></select></label>
+        <label>Moyenne du Bac <b>*</b><input type="number" name="bac_moy" step="0.01" min="10" max="20" required></label>
+        <label>Mention du Bac<select name="bac_men"><option value="">-</option><option>Passable</option><option>Assez bien</option><option>Bien</option><option>Très bien</option></select></label>
+        <label>Diplôme obtenu <b>*</b>
+          <select name="dipl" required><option value="">Choisir...</option><option>Licence fondamentale</option><option>Licence appliquée</option>
+          <option>Licence nationale</option><option>Diplôme équivalent</option></select></label>
+        <label>Spécialité de la licence <b>*</b><input name="spec" required></label>
+        <label>Établissement d'origine <b>*</b><input name="etab" required></label>
+        <label>Année d'obtention de la licence <b>*</b><input type="number" name="lic_an" min="2000" max="2026" required></label>
+        <label>Moyenne générale de la licence <b>*</b><input type="number" name="lic_moy" step="0.01" min="10" max="20" required></label>
+        <label>Nombre d'années d'études (redoublements inclus)<input type="number" name="nb_ans" min="3" max="10"></label>
+        <label>Moyennes de L1 / L2 / L3<input name="moy_ann" placeholder="ex : 12.50 / 13.10 / 14.00"></label>
+        <label>Session d'obtention
+          <select name="session"><option>Session principale</option><option>Session de rattrapage</option></select></label>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>3. Choix du Master</legend>
+      <div class="grid">
+        <label>Type de Master <b>*</b>
+          <select name="type" required><option value="">Choisir...</option><option>Master de recherche</option><option>Master professionnel</option></select></label>
+        <label>Premier choix <b>*</b>
+          <select name="c1" required><option value="">Choisir...</option><option>Finance et Banque</option><option>Comptabilité, Contrôle et Audit</option>
+          <option>Management et Marketing</option><option>Ressources Humaines</option><option>Business Intelligence</option><option>Entrepreneuriat</option></select></label>
+        <label>Deuxième choix
+          <select name="c2"><option value="">Choisir...</option><option>Finance et Banque</option><option>Comptabilité, Contrôle et Audit</option>
+          <option>Management et Marketing</option><option>Ressources Humaines</option><option>Business Intelligence</option><option>Entrepreneuriat</option></select></label>
+        <label>Troisième choix
+          <select name="c3"><option value="">Choisir...</option><option>Finance et Banque</option><option>Comptabilité, Contrôle et Audit</option>
+          <option>Management et Marketing</option><option>Ressources Humaines</option><option>Business Intelligence</option><option>Entrepreneuriat</option></select></label>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>4. Compétences et expérience</legend>
+      <div class="grid">
+        <label>Niveau de français
+          <select name="fr"><option>Débutant</option><option>Intermédiaire</option><option selected>Avancé</option></select></label>
+        <label>Niveau d'anglais
+          <select name="en"><option>Débutant</option><option selected>Intermédiaire</option><option>Avancé</option></select></label>
+        <label>Stages effectués<textarea name="stages" placeholder="Entreprise, durée, mission..."></textarea></label>
+        <label>Expérience professionnelle<textarea name="exp" placeholder="Poste, employeur, durée..."></textarea></label>
+        <label class="full">Lettre de motivation <b>*</b><textarea name="motiv" required placeholder="Pourquoi ce master ? Quel est votre projet professionnel ?"></textarea></label>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>5. Pièces à joindre</legend>
+      <div class="grid">
+        <label>Photo d'identité <b>*</b><input type="file" name="f_photo" accept="image/*" required></label>
+        <label>Copie de la CIN <b>*</b><input type="file" name="f_cin" accept=".pdf,image/*" required></label>
+        <label>CV <b>*</b><input type="file" name="f_cv" accept=".pdf" required></label>
+        <label>Diplôme du Bac <b>*</b><input type="file" name="f_bac" accept=".pdf,image/*" required></label>
+        <label>Diplôme de licence ou attestation de réussite <b>*</b><input type="file" name="f_lic" accept=".pdf,image/*" required></label>
+        <label>Relevés de notes (L1, L2, L3) <b>*</b><input type="file" name="f_notes" accept=".pdf" multiple required></label>
+      </div>
+    </fieldset>
+
+    <label class="check"><input type="checkbox" name="ok" required>
+      Je certifie sur l'honneur l'exactitude des informations fournies et j'accepte que ma candidature soit annulée en cas de fausse déclaration.</label>
+
+    <div class="btns"><button type="reset" class="reset">Effacer</button><button type="submit" class="send">Envoyer ma candidature</button></div>
+    <div id="msg" role="status"></div>
+  </form>
+</section>
+
+
+<script src="js/form.js"></script>
+</body>
+</html>
