@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+
     console.log("FORM JS CHARGÉ");
 
     const form = document.getElementById("mform");
@@ -11,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const submitBtn = form.querySelector('button[type="submit"]');
+
+    // URL de production Render
     const API_URL = "/api/candidatures";
 
     form.addEventListener("submit", async (event) => {
@@ -24,17 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Vérification de la confirmation
         const confirmation = form.querySelector('[name="ok"]');
 
         if (!confirmation || !confirmation.checked) {
-            msg.textContent = "Veuillez confirmer l'exactitude de vos informations.";
+            msg.textContent =
+                "Veuillez confirmer l'exactitude de vos informations.";
             msg.style.color = "red";
             return;
         }
 
+        // Vérification des relevés de notes
         const notes = form.querySelector('[name="f_notes"]');
 
-        if (!notes || notes.files.length === 0) {
+        if (!notes || !notes.files || notes.files.length === 0) {
             msg.textContent = "Veuillez joindre les relevés de notes.";
             msg.style.color = "red";
             return;
@@ -56,9 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData
             });
 
-            // Lire la réponse comme texte pour afficher les erreurs réelles
             const responseText = await response.text();
-            console.log("Réponse brute du serveur :", responseText);
+
+            console.log("HTTP Status :", response.status);
+            console.log("Réponse serveur :", responseText);
 
             let result;
 
@@ -66,27 +73,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 result = JSON.parse(responseText);
             } catch {
                 throw new Error(
-                    "Le serveur n'a pas retourné du JSON. HTTP " +
-                    response.status + " : " + responseText.substring(0, 300)
+                    "Réponse invalide du serveur. HTTP " +
+                    response.status + " : " +
+                    responseText.substring(0, 300)
                 );
             }
 
-            if (!response.ok || result.ok !== true) {
-                throw new Error(result.message || "Erreur HTTP " + response.status);
+            if (!response.ok) {
+                throw new Error(
+                    result.message || "Erreur HTTP " + response.status
+                );
             }
 
-            msg.textContent = "✓ " + result.message +
-                " Référence : " + result.ref;
+            if (result.ok !== true) {
+                throw new Error(
+                    result.message || "La candidature n'a pas été enregistrée."
+                );
+            }
+
+            msg.textContent =
+                "✓ Votre candidature a été envoyée avec succès ! " +
+                (result.ref ? "Référence : " + result.ref : "");
+
             msg.style.color = "green";
 
             form.reset();
 
         } catch (error) {
+
             console.error("Erreur candidature :", error);
-            msg.textContent = "Erreur : " + error.message;
+
+            msg.textContent =
+                "Échec de l'envoi : " + error.message;
+
             msg.style.color = "red";
 
         } finally {
+
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Envoyer ma candidature";
